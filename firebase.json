@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "my-oms",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

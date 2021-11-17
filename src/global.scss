@@ -9,18 +9,230 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
+
 /* Core CSS required for Ionic components to work properly */
+
 @import "~@ionic/angular/css/core.css";
 
 /* Basic CSS for apps built with Ionic */
+
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
 @import '~@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
+
 @import "~@ionic/angular/css/padding.css";
 @import "~@ionic/angular/css/float-elements.css";
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+@import "~bootstrap/dist/css/bootstrap.css";
+.center {
+    margin: 0 auto;
+}
+
+input {
+    outline: none;
+    border: none
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: none;
+    -webkit-appearance: none
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none
+}
+
+textarea {
+    outline: none;
+    border: none
+}
+
+textarea:focus,
+input:focus {
+    border-color: transparent!important
+}
+
+input:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+input:focus:-moz-placeholder {
+    color: transparent
+}
+
+input:focus::-moz-placeholder {
+    color: transparent
+}
+
+input:focus:-ms-input-placeholder {
+    color: transparent
+}
+
+textarea:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+textarea:focus:-moz-placeholder {
+    color: transparent
+}
+
+textarea:focus::-moz-placeholder {
+    color: transparent
+}
+
+textarea:focus:-ms-input-placeholder {
+    color: transparent
+}
+
+input::-webkit-input-placeholder {
+    color: #adadad
+}
+
+input:-moz-placeholder {
+    color: #adadad
+}
+
+input::-moz-placeholder {
+    color: #adadad
+}
+
+input:-ms-input-placeholder {
+    color: #adadad
+}
+
+textarea::-webkit-input-placeholder {
+    color: #adadad
+}
+
+textarea:-moz-placeholder {
+    color: #adadad
+}
+
+textarea::-moz-placeholder {
+    color: #adadad
+}
+
+textarea:-ms-input-placeholder {
+    color: #adadad
+}
+
+button {
+    outline: none!important;
+    border: none;
+    background: 0 0
+}
+
+button:hover {
+    cursor: pointer
+}
+
+iframe {
+    border: none!important
+}
+
+.custom-alert .alert-wrapper {
+    min-width: 500px !important;
+}
+
+.custom-modal .modal-wrapper {
+    --height: 692px;
+    border-radius: 12px;
+}
+
+.custom-modal .dialog-wrraper {
+    padding: 16px;
+}
+
+.bg0 {
+    background-color: #fff
+}
+
+.bg1 {
+    background-color: #f7f7f7
+}
+
+.wrap-input {
+    width: 100%;
+    position: relative;
+    border: 1px solid #e6e6e6;
+    border-radius: 6px;
+    padding: 2px 10px;
+    margin-bottom: 8px;
+    height: fit-content;
+    ion-item {
+        height: 32px;
+    }
+    ion-datetime {
+        padding-top: 0px;
+        font-size: 14px;
+    }
+}
+
+.label-input {
+    font-size: 10px;
+    color: #393939;
+    line-height: 1.5;
+    text-transform: uppercase
+}
+
+.input-class {
+    display: block;
+    width: 100%;
+    background: 0 0;
+    line-height: 1.2;
+    font-size: 14px;
+}
+
+input.input-class {
+    height: 30px;
+    padding: 0px;
+}
+
+.input-selection {
+    height: 36px;
+    overflow: hidden;
+}
+
+.input-selection:hover {
+    cursor: pointer;
+}
+
+.input-selection ion-label {
+    height: 32px;
+}
+
+.input-selection ion-item ion-label {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.input-selection ion-item ion-select {
+    padding: 0px !important;
+}
+
+.input-selection ion-item::part(native) {
+    height: 32px;
+    background: transparent;
+    padding: 0px;
+}
+
+.input-selection ion-select {
+    position: absolute;
+    top: 5px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.display-flex {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

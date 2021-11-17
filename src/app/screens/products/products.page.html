@@ -1,0 +1,83 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Quản lý sản phẩm</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="3">
+                <span class="label-input">Tìm kiếm sản phẩm</span>
+                <div class="wrap-input search-name bg1">
+                    <input class="input-class" type="text" name="search-name" placeholder="Nhập tên hoặc mã sản phẩm.." [(ngModel)]="searchValue">
+                    <ion-icon class="input-search-button" name="search" (click)="getProducts()"></ion-icon>
+                </div>
+            </ion-col>
+
+            <ion-col size="2">
+                <span class="label-input">Phân loại</span>
+                <div class="wrap-input bg1 input-selection">
+                    <ion-item>
+                        <ion-select placeholder="Chọn phân loại sản phẩm" interface="popover" [(ngModel)]="categoryId" (ionChange)="getProducts()">
+                            <ion-select-option *ngFor="let category of categories" value="{{category.id}}">{{category.type}}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-content class="table-container">
+        <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content></ion-refresher-content>
+        </ion-refresher>
+
+        <div class="table-headers ion-text-center">
+            <div style="width: 5%">#</div>
+            <div style="width: 5%">Ảnh</div>
+            <div style="width: 10%">Mã</div>
+            <div style="width: 25%">Tên sản phẩm</div>
+            <div style="width: 8%">Giá (VND)</div>
+            <div style="width: 7%">Số lượng</div>
+            <div style="width: 10%">Ngày nhập</div>
+            <div style="width: 5%">Kích cỡ</div>
+            <div style="width: 10%">Nhãn hiệu</div>
+            <div style="width: 10%">Màu</div>
+            <div style="width: 5%">&nbsp;</div>
+        </div>
+
+        <ion-label *ngIf="products.length == 0 && !isLoadingData" class="no-data-label">Không có dữ liệu sản phẩm</ion-label>
+
+        <ion-list *ngIf="products.length > 0 && !isLoadingData">
+            <ion-item *ngFor="let product of products; let i = index" (click)="openEditAlert(product)">
+                <div class="ion-text-center" style="width: 5%">{{i + 1}}</div>
+                <div style="width: 5%">
+                    <ion-img class="center" [src]="_getProductImage(product.image)"></ion-img>
+                </div>
+                <div style="width: 10%">{{product.code}}</div>
+                <div style="width: 25%">{{product.name}}</div>
+                <div class="ion-text-right" style="width: 8%">{{product.price | number}}</div>
+                <div class="ion-text-right" style="width: 7%">{{product.quantity | number}}</div>
+                <div class="ion-text-center" style="width: 10%">{{product.insertedDate | date:'dd/MM/YYYY'}}</div>
+                <div class="ion-text-center" style="width: 5%">{{product.size}}</div>
+                <div style="width: 10%">{{product.brand}}</div>
+                <div style="width: 10%">{{product.color}}</div>
+                <div class="ion-text-center" style="width: 5%">
+                    <ion-icon class="button-list" color="danger" name="trash-outline" (click)="deleteProduct(product); $event.stopPropagation()"></ion-icon>
+                </div>
+            </ion-item>
+        </ion-list>
+
+        <ion-infinite-scroll (ionInfinite)="loadMoreData($event)">
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Đang tải sản phẩm...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </ion-content>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="openAddProductsDialog()">
+        <ion-fab-button>
+            <ion-icon name="add-circle"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

@@ -1,0 +1,68 @@
+<ion-content>
+    <form class="dialog-wrraper validate-form" #form>
+        <span class="dialog-wrraper-title">Thêm sản phẩm</span>
+        <div class="container-image">
+            <img id="product-image" [src]="imageUrl" />
+        </div>
+
+        <div class="display-flex">
+            <div class="wrap-input bg1 rs1-wrap-input">
+                <span class="label-input">Ảnh</span>
+                <input class="input-class" type="text" name="image" placeholder="Paste ảnh hoặc đường dẫn url" (input)="onImageChange($event)" (paste)="onPaste($event)" [(ngModel)]="image">
+            </div>
+            <div class="wrap-input bg1 input-selection rs1-wrap-input">
+                <span class="label-input">Ngày nhập</span>
+                <ion-item>
+                    <ion-datetime #insertedDatePicker name="insertedDate" displayFormat="DD/MM/YYYY" min="2021-01-01" max="2100-01-01" [(ngModel)]="insertedDate" value="{{insertedDate}}" (ionChange)="onSelectedDate(insertedDatePicker.value)"></ion-datetime>
+                </ion-item>
+            </div>
+        </div>
+
+        <div class="wrap-input bg1">
+            <span class="label-input">Tên sản phẩm</span>
+            <input class="input-class" type="text" name="name" placeholder="Nhập tên sản phẩm" required [(ngModel)]="name">
+        </div>
+        <div class="wrap-input bg1 rs1-wrap-input">
+            <span class="label-input">Mã</span>
+            <input class="input-class" type="text" name="code" placeholder="Nhập mã code sản phẩm" [(ngModel)]="code">
+        </div>
+        <div class="wrap-input bg1 rs1-wrap-input input-selection">
+            <span class="label-input">Phân loại</span>
+            <ion-item>
+                <ion-select name="categoryId" placeholder="Chọn phân loại sản phẩm" interface="popover" [compareWith]="compareSelection" [(value)]="categoryId" [(ngModel)]="categoryId">
+                    <ion-select-option *ngFor="let category of categories" [value]="category.id">{{category.type}}</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+        <div class="wrap-input bg1 rs1-wrap-input">
+            <span class="label-input">Giá</span>
+            <input class="input-class" type="number" name="price" (input)="validateNumber($event, price)" placeholder="Nhập giá sản phẩm" required [(ngModel)]="price">
+        </div>
+        <div class="wrap-input bg1 rs1-wrap-input">
+            <span class="label-input">Số lượng</span>
+            <input class="input-class" type="number" name="quantity" (input)="validateNumber($event, quantity)" placeholder="Nhập số lượng sản phẩm" required [(ngModel)]="quantity">
+        </div>
+
+        <div class="wrap-input bg1 rs2-wrap-input">
+            <span class="label-input">Kích cỡ</span>
+            <input class="input-class" type="text" name="size" placeholder="S/M/L..." [(ngModel)]="size">
+        </div>
+
+        <div class="wrap-input bg1 rs2-wrap-input">
+            <span class="label-input">Nhãn hiệu</span>
+            <input class="input-class" type="text" name="brand" placeholder="Nhập hãng sản phẩm" [(ngModel)]="brand">
+        </div>
+
+        <div class="wrap-input bg1 rs2-wrap-input">
+            <span class="label-input">Màu sắc</span>
+            <input class="input-class" type="text" name="color" placeholder="Đen/Trắng/Đỏ..." [(ngModel)]="color">
+        </div>
+
+        <div class="container-dialog-wrraper-btn">
+            <ion-button type="submit " expand="full " shape="round " (click)="form.checkValidity() ? save() : null ">
+                <span *ngIf="id == ''">+ Thêm</span>
+                <span *ngIf="id != ''">Cập nhật</span>
+            </ion-button>
+        </div>
+    </form>
+</ion-content>

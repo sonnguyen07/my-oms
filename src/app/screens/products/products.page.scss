@@ -1,0 +1,196 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: #202020;
+}
+
+p {
+    display: none;
+}
+
+ion-content {
+    padding: 12px;
+}
+
+.table-container {
+    width: 100%;
+    height: calc(100% - 128px);
+    overflow: auto;
+    outline: 1px solid #ECF0F1;
+    table-layout: fixed;
+    border-collapse: collapse;
+    text-align: left;
+    border-bottom: 1px solid rgba(56, 128, 255, 0.1);
+    .no-data-label {
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        color: var(--ion-color-dark-tint);
+    }
+    .table-headers {
+        width: 100%;
+        height: 32px;
+        display: inline-flex;
+        div {
+            border-top: 1px solid #ECF0F1;
+            padding: 4px 10px;
+            font-size: 14px;
+            display: inline-block;
+            color: white;
+            font-weight: bold;
+            background-color: var(--ion-color-primary);
+        }
+    }
+    ion-list {
+        padding-top: 0px;
+        ion-item::part(native) {
+            padding-left: 0px;
+            width: calc(100% + 16px);
+        }
+        ion-item {
+            --min-height: 34px;
+            div {
+                padding: 0px 8px;
+                align-items: center;
+                display: grid;
+                border-left: 1px solid #ECF0F1;
+                border-right: 1px solid #ECF0F1;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                height: 32px;
+                font-size: 14px;
+                ion-img {
+                    width: 32px;
+                    height: 32px;
+                    --background-color: var(--ion-color-medium);
+                }
+            }
+        }
+        ion-item:nth-of-type(even) {
+            --background: rgba(56, 128, 255, 0.05);
+        }
+        ion-item:hover {
+            outline: 1px solid #377fff;
+            box-shadow: 0 8px 16px rgb(0 0 0 / 10%), 0 3px 6px rgb(0 0 0 / 8%);
+            cursor: pointer;
+            font-weight: 500;
+            z-index: 2;
+        }
+    }
+    .total {
+        th {
+            background-color: white;
+        }
+        td {
+            text-align: right;
+            font-weight: 700;
+        }
+    }
+    .button-list {
+        width: 22px;
+        height: 22px;
+        border-radius: 4px;
+        border: 1px solid #dbdbdb;
+        margin-right: 8px;
+        background-color: white;
+    }
+    .button-list:last-child {
+        margin-right: 0px !important;
+    }
+    .button-list:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 16px rgb(0 0 0 / 10%), 0 3px 6px rgb(0 0 0 / 8%);
+    }
+}
+
+.mobile-header {
+    display: none;
+}
+
+@media only screen and (max-width: 760px) {
+    p {
+        display: block;
+        font-weight: bold;
+    }
+    table {
+        tr {
+            td:not(:first-child),
+            th:not(:first-child),
+            td:not(.total-val) {
+                display: none;
+            }
+            &:nth-of-type(even) td:first-child {
+                background-color: lighten(#4ECDC4, 35%);
+            }
+            &:nth-of-type(odd) td:first-child {
+                background-color: white;
+            }
+            &:nth-of-type(even) td:not(:first-child) {
+                background-color: white;
+            }
+            th:first-child {
+                width: 100%;
+                display: block;
+            }
+            th:not(:first-child) {
+                width: 40%;
+                transition: transform 0.4s ease-out;
+                transform: translateY(-9999px);
+                position: relative;
+                z-index: -1;
+            }
+            td:not(:first-child) {
+                transition: transform 0.4s ease-out;
+                transform: translateY(-9999px);
+                width: 60%;
+                position: relative;
+                z-index: -1;
+            }
+            td:first-child {
+                display: block;
+                cursor: pointer;
+            }
+            &.total th {
+                width: 25%;
+                display: inline-block;
+            }
+            td.total-val {
+                display: inline-block;
+                transform: translateY(0);
+                width: 75%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    table {
+        tr {
+            th:not(:first-child) {
+                width: 50%;
+                font-size: 14px;
+            }
+            td:not(:first-child) {
+                width: 50%;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.search-name {
+    display: inline-flex;
+    .input-search-button {
+        width: 20px;
+        height: 20px;
+        margin: auto;
+    }
+    .input-search-button:hover {
+        cursor: pointer;
+    }
+}
